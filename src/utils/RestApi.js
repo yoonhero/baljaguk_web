@@ -3,19 +3,16 @@ const siteUrl = "https://baljaguk.herokuapp.com";
 const RestApi = {
   //////////////////////////////// Post Api Function /////////////////////////////////////////
   postApi: async (url, data) => {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: `${data}`,
-    });
-
-    response.json().then((data) => {
-      return data;
-    });
-
-    return null;
+    console.log(data);
+    axios
+      .post(url, JSON.stringify(data))
+      .then((response) => {
+        return true;
+      })
+      .catch((error) => {
+        console.log(error);
+        return false;
+      });
   },
 
   //////////////////////////////// Get Address And Private Key /////////////////////////////////////////
@@ -34,35 +31,54 @@ const RestApi = {
 
   //////////////////////////////// Make User /////////////////////////////////////////
   createUser: async (phoneNum, email) => {
+    let ok = true;
     let addressAndPrivateKey = await RestApi.createKey();
 
     const data = {
       address: addressAndPrivateKey?.address,
-      privateKey: addressAndPrivateKey?.privateKey,
+      privateKey: addressAndPrivateKey?.key,
       phoneNumber: phoneNum,
       email,
     };
 
-    result = await RestApi.postApi(`${siteUrl}/userblocks`, data);
-    console.log(result);
+    ok = await RestApi.postApi(`${siteUrl}/userblocks`, data);
 
-    return result;
+    return ok;
   },
 
   //////////////////////////////// Make Store /////////////////////////////////////////
   createStore: async (phoneNum) => {
+    let ok = true;
     let addressAndPrivateKey = await RestApi.createKey();
 
     const data = {
       address: addressAndPrivateKey?.address,
-      privateKey: addressAndPrivateKey?.privateKey,
+      privateKey: addressAndPrivateKey?.key,
       phoneNumber: phoneNum,
     };
 
-    result = await RestApi.postApi(`${siteUrl}/storeblocks`, data);
-    console.log(result);
+    ok = await RestApi.postApi(`${siteUrl}/storeblocks`, data);
 
-    return result;
+    return ok;
+  },
+
+  //////////////////////////////// Add Baljaguk ///////////////////////////////
+  createBaljaguk: async (userHash, storeHash, latitude, longitude) => {
+    let ok = true;
+
+    // sample latitude longitude
+    //   "latitude":"37.198181",
+    // "longitude":"127.074224"
+    const data = {
+      userhash: userHash,
+      storehash: storeHash,
+      latitude: latitude,
+      longitude: longitude,
+    };
+
+    ok = await RestApi.postApi(`${siteUrl}/baljaguks`, data);
+
+    return ok;
   },
 };
 
