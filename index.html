@@ -16,6 +16,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- ////////////////////////////////// Header ////////////////////////////////// -->
   <header>
     <div class="container-sm p-3 p-md-4 d-flex justify-content-between">
       <button type="button" class="navbar-button navbar-button-fill">
@@ -26,12 +27,18 @@
       </button>
     </div>
   </header>
+
+  <!-- ////////////////////////////////// Main Contents ////////////////////////////////// -->
   <main>
     <div class="container-sm p-5 p-md-4">
+
+      <!-- ////////////////////////////////// Tab Contents ////////////////////////////////// -->
       <div class="tab-content">
+
+        <!-- ////////////////////////////////// Home Tab ////////////////////////////////// -->
         <div
           id="home"
-          class="tab-pane fade"
+          class="tab-pane fade active show"
           role="tabpanel"
           aria-labelledby="homeNavLink"
         >
@@ -39,6 +46,8 @@
           <p class="lead">블록체인 기술에는 블록과 블록을 연결하는 체인이 있습니다.</p>
           <p><strong>발자국을 남겨요</strong> 프로젝트는 상점에서 발행하는 체인으로 방문자의 정보가 담긴 블록을 연결하여 방문록을 만듭니다.</p>
         </div>
+
+        <!-- ////////////////////////////////// Timeline Tab ////////////////////////////////// -->
         <div
           id="timeline"
           class="tab-pane fade"
@@ -49,6 +58,8 @@
           <p class="lead">다녀간 상점을 최신순으로 확인하세요.</p>
           <p>코로나 확진 판정 또는 확진자와 동선이 겹친 경우 역학조사를 빠르게 진행하여 추가 확산을 방지할 수 있습니다.</p>
         </div>
+
+        <!-- ////////////////////////////////// Store Tab ////////////////////////////////// -->
         <div
           id="store"
           class="tab-pane fade"
@@ -59,9 +70,11 @@
           <p class="lead">다녀간 상점 정보 및 방문록을 확인하세요.</p>
           <p>1개월 기준, 최대 6개월 기간의 동선을 파악할 수 있습니다. 방문록은 블록체인 기술을 사용하여 조작이 불가능합니다.</p>
         </div>
+
+        <!-- ////////////////////////////////// Account Tab ////////////////////////////////// -->
         <div
           id="account"
-          class="tab-pane fade show active"
+          class="tab-pane fade"
           role="tabpanel"
           aria-labelledby="accountNavLink"
         >
@@ -83,15 +96,18 @@
             </li>
           </ul>
         </div>
+
       </div>
     </div>
+
+    <!-- ////////////////////////////////// Bottom Tab Bar ////////////////////////////////// -->
     <div class="container-sm fixed-bottom p-3 p-md-4">
       <ul id="navigation" class="nav nav-pills justify-content-center" role="tablist">
         <li class="nav-item" role="presentation">
           <button
             type="button"
             id="homeNavLink"
-            class="nav-link"
+            class="nav-link active"
             role="tab"
             aria-controls="home"
             data-bs-toggle="tab"
@@ -133,7 +149,7 @@
           <button
             type="button"
             id="accountNavLink"
-            class="nav-link active"
+            class="nav-link"
             role="tab"
             aria-controls="account"
             data-bs-toggle="tab"
@@ -146,5 +162,7 @@
       </ul>
     </div>
   </main>
+
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
