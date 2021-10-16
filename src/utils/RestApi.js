@@ -35,8 +35,6 @@ const RestApi = {
 
   //////////////////////////////// Make User /////////////////////////////////////////
   createUser: async (phoneNum, email) => {
-    let ok = true;
-
     let addressAndPrivateKey = await RestApi.createKey();
 
     const data = {
@@ -48,6 +46,24 @@ const RestApi = {
 
     result = await RestApi.postApi(`${siteUrl}/userblocks`, data);
     console.log(result);
+
+    return result;
+  },
+
+  //////////////////////////////// Make Store /////////////////////////////////////////
+  createStore: async (phoneNum) => {
+    let addressAndPrivateKey = await RestApi.createKey();
+
+    const data = {
+      address: addressAndPrivateKey?.address,
+      privateKey: addressAndPrivateKey?.privateKey,
+      phoneNumber: phoneNum,
+    };
+
+    result = await RestApi.postApi(`${siteUrl}/storeblocks`, data);
+    console.log(result);
+
+    return result;
   },
 };
 
