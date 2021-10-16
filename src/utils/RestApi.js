@@ -80,6 +80,36 @@ const RestApi = {
 
     return ok;
   },
+
+  //////////////////////////////// Find User ///////////////////////////////
+  findUser: async (userhash) => {
+    let user = [];
+
+    await fetch(`${siteUrl}/user/${userhash}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json_response) {
+        user = json_response;
+      });
+
+    return user;
+  },
+
+  //////////////////////////////// Find Store ///////////////////////////////
+  findStore: async (storeHash) => {
+    let store = [];
+
+    await fetch(`${siteUrl}/store/${storeHash}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json_response) {
+        store = json_response;
+      });
+
+    return store;
+  },
 };
 
 export { RestApi };
