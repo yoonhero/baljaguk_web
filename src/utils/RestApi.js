@@ -1,3 +1,5 @@
+import { UserStorage } from "./CustomStorage.js";
+
 const siteUrl = "https://baljaguk.herokuapp.com";
 
 const RestApi = {
@@ -29,6 +31,20 @@ const RestApi = {
     return addressAndPrivateKey;
   },
 
+  //////////////////////////////// Get Baljaguks /////////////////////////////////////////
+  baljaguks: async () => {
+    let result = [];
+
+    await fetch(`${siteUrl}/baljaguks`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json_response) {
+        result = json_response;
+      });
+    return result;
+  },
+
   //////////////////////////////// Make User /////////////////////////////////////////
   createUser: async (phoneNum, email) => {
     let ok = true;
@@ -42,6 +58,10 @@ const RestApi = {
     };
 
     ok = await RestApi.postApi(`${siteUrl}/userblocks`, data);
+
+    if (ok) {
+      UserStorage.setUser(data.address, data.privateKey);
+    }
 
     return ok;
   },

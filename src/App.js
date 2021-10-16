@@ -4,7 +4,6 @@ import { UserStorage } from "./utils/CustomStorage.js";
 
 export default class App {
   constructor($target) {
-    let user = UserStorage.setUser("dkssud", "");
     console.log(user);
   }
 }

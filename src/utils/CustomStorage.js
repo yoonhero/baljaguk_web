@@ -13,7 +13,7 @@ const UserStorage = {
   },
 
   setUser: async (address, privateKey) => {
-    let ok = await UserStorage.isUserExisted(address);
+    let ok = await UserStorage.isUserExisted(address, privateKey);
     if (!ok) {
       return false;
     }
@@ -30,6 +30,14 @@ const UserStorage = {
     return true;
   },
 
+  createAccount: async (phoneNum, email) => {
+    return await RestApi.createUser(phoneNum, email);
+  },
+
+  login: async (address, privateKey) => {
+    return await UserStorage.setUser(address, privateKey);
+  },
+
   isLoggedIn: () => {
     const user = UserStorage.getUser();
 
@@ -40,10 +48,10 @@ const UserStorage = {
     return false;
   },
 
-  isUserExisted: async (address) => {
+  isUserExisted: async (address, privateKey) => {
     const user = await RestApi.findUser(address);
 
-    if (user) {
+    if (user && user.privateKey == privateKey) {
       return true;
     }
 
