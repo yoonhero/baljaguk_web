@@ -9,11 +9,12 @@ const Map = {
     return map;
   },
 
-  drawPinsNLine: (map, coordinates) => {
-    coordinates.map((coordinate) => {
+  drawPinsNLine: (map, coordinates, timeline) => {
+    coordinates.map((coordinate, i) => {
       new google.maps.Marker({
         position: { lat: coordinate.lat, lng: coordinate.lng },
         map: map,
+        label: timeline[i],
       });
     });
 

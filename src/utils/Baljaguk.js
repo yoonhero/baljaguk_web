@@ -22,6 +22,24 @@ const Baljaguk = {
     return month + day;
   },
 
+  getTimeLineLabel: (timestamp) => {
+    let date = new Date(timestamp);
+
+    let day = date.getDate();
+    day = String(day);
+    day = day.length == 1 ? "0" + day : day;
+
+    let hour = date.getHours();
+    hour = String(hour);
+    hour = hour.length == 1 ? "0" + hour : hour;
+
+    let minutes = date.getMinutes();
+    minutes = String(minutes);
+    minutes = minutes.length == 1 ? "0" + minutes : minutes;
+
+    return day + "일" + hour + "시" + minutes + "분";
+  },
+
   seeBaljaguk: async (address) => {
     const baljaguks = await RestApi.baljaguks();
 
@@ -33,19 +51,19 @@ const Baljaguk = {
       "1e092e3e37610c45296d88d9cd923a608217bb65d54357f110470c3b80a1b03486db82d6f52889197ca59edf6f7c50625e5357d5da50b1bb90be69a7cb0c9b3b"
     );
 
-    console.log(baljaguks);
+    let timeline = baljaguks.map((baljaguk) => {
+      return Baljaguk.getTimeLineLabel(baljaguk.timestamp * 1000);
+    });
 
     let coordinates = baljaguks.map((baljaguk) => {
       return {
-        lat: Math.floor(baljaguk?.latitude),
-        lng: Math.floor(baljaguk?.longitude),
+        lat: parseFloat(baljaguk?.latitude),
+        lng: parseFloat(baljaguk?.longitude),
       };
     });
 
-    console.log(coordinates);
-
     let map = Map.initMap();
-    Map.drawPinsNLine(map, coordinates);
+    Map.drawPinsNLine(map, coordinates, timeline);
   },
 };
 
