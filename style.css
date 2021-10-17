@@ -83,13 +83,16 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 4px dashed #000;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px;
 }
 
 .main_img {
   width: 100%;
   max-width: 580px;
   height: auto;
-  border: none;
 }
 
 .bottom-margin {

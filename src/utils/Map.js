@@ -1,3 +1,11 @@
+function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
+
 const Map = {
   initMap: () => {
     let home = { lat: 37.198181, lng: 127.074224 };
@@ -10,18 +18,39 @@ const Map = {
   },
 
   drawPinsNLine: (map, coordinates, timeline) => {
+    const image = {
+      url: "http://localhost:5500/footprint.png",
+      // This marker is 20 pixels wide by 32 pixels high.
+      size: new google.maps.Size(50, 50),
+      // The origin for this image is (0, 0).
+      origin: new google.maps.Point(0, 0),
+      // The anchor for this image is the base of the flagpole at (0, 32).
+      anchor: new google.maps.Point(25, 32),
+    };
+    // Shapes define the clickable region of the icon. The type defines an HTML
+    // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+    // The final coordinate closes the poly by connecting to the first coordinate.
+    const shape = {
+      coords: [1, 1, 1, 20, 18, 20, 18, 1],
+      type: "poly",
+    };
     coordinates.map((coordinate, i) => {
-      new google.maps.Marker({
+      let marker = new google.maps.Marker({
         position: { lat: coordinate.lat, lng: coordinate.lng },
         map: map,
         label: timeline[i],
+        icon: image,
+        shape: shape,
+        animation: google.maps.Animation.DROP,
       });
+
+      marker.addListener("click", toggleBounce);
     });
 
     const flightPath = new google.maps.Polyline({
       path: coordinates,
       geodesic: true,
-      strokeColor: "#FF0000",
+      strokeColor: "#774936",
       strokeOpacity: 1.0,
       strokeWeight: 1,
     });
