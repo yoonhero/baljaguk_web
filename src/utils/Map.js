@@ -19,7 +19,7 @@ const Map = {
 
   drawPinsNLine: (map, coordinates, timeline) => {
     const image = {
-      url: "http://localhost:5500/footprint.png",
+      url: "https://baljaguk.netlify.app/footprint.png",
       // This marker is 20 pixels wide by 32 pixels high.
       size: new google.maps.Size(50, 50),
       // The origin for this image is (0, 0).
