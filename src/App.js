@@ -8,15 +8,18 @@ const loginedScreen = document.querySelector(".loggedInContent");
 const loggedOutContent = document.querySelector(".loggedOutContent");
 const privateKeyText = document.querySelector(".user_privatekey");
 const addressText = document.querySelector(".user_address");
+
 const loginForm = document.querySelector(".loginForm");
 const loginBtn = loginForm.querySelector(".loginBtn");
 const phoneNumber = loginForm.querySelector(".phoneNum");
 const email = loginForm.querySelector(".email");
+const errorMessage = loginForm.querySelector(".errorMessage");
 
 const userloginForm = document.querySelector(".userloginForm");
 const user_loginBtn = userloginForm.querySelector(".loginBtn");
 const input_address = userloginForm.querySelector(".input_address");
 const input_privateKey = userloginForm.querySelector(".input_privateKey");
+const loginErrorMessage = userloginForm.querySelector(".errorMessage");
 
 const changeMode = document.querySelector(".changeModeBtn");
 
@@ -56,6 +59,7 @@ function init() {
     });
 
     loginForm.addEventListener("submit", async () => {
+      errorMessage.innerText = "";
       event.preventDefault();
       loginBtn.disabled = "disabled";
       loginBtn.innerText = "Loading...";
@@ -65,10 +69,15 @@ function init() {
       if (ok) {
         loginedScreen.classList.remove("hidden");
         loggedOutContent.classList.add("hidden");
+      } else {
+        errorMessage.innerText = "다시 시도해주세요!";
+        loginBtn.disabled = false;
+        loginBtn.innerText = "유저 생성!";
       }
     });
 
     userloginForm.addEventListener("submit", async () => {
+      loginErrorMessage.innerText = "";
       event.preventDefault();
       user_loginBtn.disabled = "disabled";
       user_loginBtn.innerText = "Loading...";
@@ -81,6 +90,10 @@ function init() {
       if (ok) {
         loginedScreen.classList.remove("hidden");
         loggedOutContent.classList.add("hidden");
+      } else {
+        loginErrorMessage.innerText = "다시 시도해주세요!";
+        user_loginBtn.disabled = false;
+        user_loginBtn.innerText = "유저 로그인!";
       }
     });
   }
