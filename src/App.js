@@ -46,8 +46,12 @@ function init() {
       console.log(changeMode.innerText);
       if (changeMode.innerText == "Login") {
         changeMode.innerText = "Create Account";
+        loginForm.classList.add("hidden");
+        userloginForm.classList.remove("hidden");
       } else if (changeMode.innerText == "Create Account") {
         changeMode.innerText = "Login";
+        loginForm.classList.remove("hidden");
+        userloginForm.classList.add("hidden");
       }
     });
 
@@ -57,6 +61,22 @@ function init() {
       loginBtn.innerText = "Loading...";
 
       let ok = await UserStorage.createAccount(phoneNumber.value, email.value);
+
+      if (ok) {
+        loginedScreen.classList.remove("hidden");
+        loggedOutContent.classList.add("hidden");
+      }
+    });
+
+    userloginForm.addEventListener("submit", async () => {
+      event.preventDefault();
+      user_loginBtn.disabled = "disabled";
+      user_loginBtn.innerText = "Loading...";
+
+      let ok = await UserStorage.login(
+        input_address.value,
+        input_privateKey.value
+      );
 
       if (ok) {
         loginedScreen.classList.remove("hidden");
