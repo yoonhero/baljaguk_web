@@ -98,3 +98,7 @@ button {
 .bottom-margin {
   margin-bottom: 300px;
 }
+
+.hidden {
+  display: none;
+}

@@ -47,9 +47,7 @@ const Baljaguk = {
   },
 
   drawBaljaguk: async (address) => {
-    const baljaguks = await Baljaguk.seeBaljaguk(
-      "1e092e3e37610c45296d88d9cd923a608217bb65d54357f110470c3b80a1b03486db82d6f52889197ca59edf6f7c50625e5357d5da50b1bb90be69a7cb0c9b3b"
-    );
+    const baljaguks = await Baljaguk.seeBaljaguk(address);
 
     let timeline = baljaguks.map((baljaguk) => {
       return Baljaguk.getTimeLineLabel(baljaguk.timestamp * 1000);

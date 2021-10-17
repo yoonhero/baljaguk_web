@@ -1,5 +1,5 @@
-import App from "./App.js";
+import { init } from "./App.js";
 
 window.onload = () => {
-  new App();
+  init();
 };
