@@ -2,9 +2,11 @@
 import { RestApi } from "./utils/RestApi.js";
 import { UserStorage } from "./utils/CustomStorage.js";
 import { Baljaguk } from "./utils/Baljaguk.js";
+import { Map } from "./utils/Map.js";
 
 export default class App {
   constructor($target) {
-    console.log(Baljaguk.now());
+    let map = Map.drawMap();
+    Map.drawPin(map, {});
   }
 }
