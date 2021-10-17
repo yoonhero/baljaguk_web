@@ -143,4 +143,24 @@ button {
 .errorMessage {
   color: tomato;
   padding: 5px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.changeMode {
+  font-weight: 400;
+}
+
+.changeModeBtn {
+  font-weight: 600;
+  margin-left: 5px;
+  color: #45aba6;
+}
+
+.changeModeBtn:active {
+  color: #45aba6;
+}
+
+.changeModeBtn:hover {
+  color: #347572;
 }

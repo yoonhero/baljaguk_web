@@ -46,7 +46,6 @@ function init() {
     loggedOutContent.classList.remove("hidden");
 
     changeMode.addEventListener("click", () => {
-      console.log(changeMode.innerText);
       if (changeMode.innerText == "Login") {
         changeMode.innerText = "Create Account";
         loginForm.classList.add("hidden");
