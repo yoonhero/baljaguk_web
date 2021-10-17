@@ -6,7 +6,7 @@ import { Map } from "./utils/Map.js";
 
 export default class App {
   constructor($target) {
-    let map = Map.drawMap();
-    Map.drawPin(map, {});
+    let map = Map.initMap();
+    Map.drawPinsNLine(map, {});
   }
 }
