@@ -8,6 +8,10 @@ const loginedScreen = document.querySelector(".loggedInContent");
 const loggedOutContent = document.querySelector(".loggedOutContent");
 const privateKeyText = document.querySelector(".user_privatekey");
 const addressText = document.querySelector(".user_address");
+const loginForm = document.querySelector(".loginForm");
+const loginBtn = document.querySelector(".loginBtn");
+const phoneNumber = document.querySelector(".phoneNum");
+const email = document.querySelector(".email");
 
 function init() {
   const user = UserStorage.getUser();
@@ -22,6 +26,7 @@ function init() {
     privateKeyText.innerText = user?.privateKey;
     Baljaguk.drawBaljaguk(user?.address);
   } else {
+    //////////////////////////////// WHEN Not LoggedIn //////////////////////////////////
     try {
       loginedScreen.classList.remove("hidden");
     } catch (e) {
@@ -29,6 +34,19 @@ function init() {
     }
     loginedScreen.classList.add("hidden");
     loggedOutContent.classList.remove("hidden");
+
+    loginForm.addEventListener("submit", async () => {
+      event.preventDefault();
+      loginBtn.disabled = "disabled";
+      loginBtn.innerText = "Loading...";
+
+      let ok = await UserStorage.createAccount(phoneNumber.value, email.value);
+
+      if (ok) {
+        loginedScreen.classList.remove("hidden");
+        loggedOutContent.classList.add("hidden");
+      }
+    });
   }
 }
 

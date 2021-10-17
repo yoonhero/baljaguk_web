@@ -5,8 +5,7 @@ const siteUrl = "https://baljaguk.herokuapp.com";
 const RestApi = {
   //////////////////////////////// Post Api Function /////////////////////////////////////////
   postApi: async (url, data) => {
-    console.log(data);
-    axios
+    return axios
       .post(url, JSON.stringify(data))
       .then((response) => {
         return true;
@@ -19,7 +18,7 @@ const RestApi = {
 
   //////////////////////////////// Get Address And Private Key /////////////////////////////////////////
   createKey: async () => {
-    let addressAndPrivateKey = [];
+    let addressAndPrivateKey = {};
 
     await fetch(`${siteUrl}/createkey`)
       .then(function (response) {

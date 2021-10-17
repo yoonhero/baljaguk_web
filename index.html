@@ -34,15 +34,16 @@
       <div class="container  flex-column justify-content-center login-form">
         <h1>발자국을 남겨요!</h>
       </div>
-      
-      <div class="container flex-column login-form">
-        <input type="text" placeholder="전화번호" />
-        <input type="text" placeholder="이메일" />
-      </div>
-
-      <div class="container flex-column login-form">
-        <button type="submit" class="loginBtn primary-button ">유저 생성!</button>
-      </div>
+      <form class="loginForm">
+        <div class="container flex-column login-form">
+          <input type="text" placeholder="전화번호" class="phoneNum" required />
+          <input type="email" placeholder="이메일" class="email" required />
+        </div>
+  
+        <div class="container flex-column login-form">
+          <button type="submit" class="loginBtn primary-button ">유저 생성!</button>
+        </div>
+      </form>
     </div>
   </main>
 
@@ -115,11 +116,11 @@
           <ul class="list-group">
             <li class="list-group-item p-3 ps-4 pe-4">
               <div class="fw-bold user_address">아이디</div>
-              <div>atc</div>
+              <div></div>
             </li>
             <li class="list-group-item p-3 ps-4 ps-4">
               <div class="fw-bold">비밀번호 <small>(비밀 키)</small></div>
-              <div class="d-inline user_privatekey">30770201010420624d41a761e520a1c070a7f19c970a767d44af10614af5e23923a961be3de3cca00a06082a8648ce3d030107a14403420004d6106e193c7c1809ba0569d11e1f9ddb7a37d35ef79b4aa9157a795d303c26aadf1fc639755057ecee2fd64ed8af3673cfdafe2239ade7a95dfd581271fcea80</div>
+              <div class="d-inline user_privatekey"></div>
             </li>
           </ul>
         </div>

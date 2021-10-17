@@ -31,7 +31,8 @@ const UserStorage = {
   },
 
   createAccount: async (phoneNum, email) => {
-    return await RestApi.createUser(phoneNum, email);
+    let ok = await RestApi.createUser(phoneNum, email);
+    return ok;
   },
 
   login: async (address, privateKey) => {
