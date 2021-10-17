@@ -28,6 +28,7 @@
     </div>
   </header>
 
+  <!-- ////////////////////////////////// LoggedOut Main Contents ////////////////////////////////// -->
   <main class="loggedOutContent hidden">
 
     <div class="container-sm p-5 p-md-4 d-flex flex-column justify-content-center">
@@ -44,6 +45,21 @@
           <button type="submit" class="loginBtn primary-button ">유저 생성!</button>
         </div>
       </form>
+
+      <form class="userloginForm hidden">
+        <div class="container flex-column login-form">
+          <input type="text" placeholder="유저 주소" class="input_address" required />
+          <input type="email" placeholder="유저 프리베이트 키" class="input_privateKey" required />
+        </div>
+  
+        <div class="container flex-column login-form">
+          <button type="submit" class="loginBtn primary-button ">유저 로그인!</button>
+        </div>
+      </form>
+
+      <div class="container m-2">
+        <p>Or <a class="changeModeBtn">Login</a></p>
+      </div>
     </div>
   </main>
 
@@ -91,7 +107,7 @@
           id="store"
           class="tab-pane fade"
           role="tabpanel"
-          aria-labelledby="storeNavLink"
+          aria-labelledby="mapNavLink"
         >
           <h1 class="display-6">지도</h1>
           <p class="lead">다녀간 상점 정보 및 방문록을 확인하세요.</p>

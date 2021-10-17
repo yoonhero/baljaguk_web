@@ -9,9 +9,16 @@ const loggedOutContent = document.querySelector(".loggedOutContent");
 const privateKeyText = document.querySelector(".user_privatekey");
 const addressText = document.querySelector(".user_address");
 const loginForm = document.querySelector(".loginForm");
-const loginBtn = document.querySelector(".loginBtn");
-const phoneNumber = document.querySelector(".phoneNum");
-const email = document.querySelector(".email");
+const loginBtn = loginForm.querySelector(".loginBtn");
+const phoneNumber = loginForm.querySelector(".phoneNum");
+const email = loginForm.querySelector(".email");
+
+const userloginForm = document.querySelector(".userloginForm");
+const user_loginBtn = userloginForm.querySelector(".loginBtn");
+const input_address = userloginForm.querySelector(".input_address");
+const input_privateKey = userloginForm.querySelector(".input_privateKey");
+
+const changeMode = document.querySelector(".changeModeBtn");
 
 function init() {
   const user = UserStorage.getUser();
@@ -34,6 +41,15 @@ function init() {
     }
     loginedScreen.classList.add("hidden");
     loggedOutContent.classList.remove("hidden");
+
+    changeMode.addEventListener("click", () => {
+      console.log(changeMode.innerText);
+      if (changeMode.innerText == "Login") {
+        changeMode.innerText = "Create Account";
+      } else if (changeMode.innerText == "Create Account") {
+        changeMode.innerText = "Login";
+      }
+    });
 
     loginForm.addEventListener("submit", async () => {
       event.preventDefault();
