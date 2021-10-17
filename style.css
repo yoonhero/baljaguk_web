@@ -102,3 +102,39 @@ button {
 .hidden {
   display: none;
 }
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form {
+  width: 100%;
+  padding: 10px;
+}
+
+.login-form input {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  margin: 5px;
+}
+
+.loginBtn {
+  background: #45aba6;
+  padding: 11px 50px;
+  border-color: #45aba6;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  border: 1px solid #45aba6;
+  border-radius: 44px;
+  width: 100%;
+  height: 56px;
+  cursor: pointer;
+}
+
+.loginBtn:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
