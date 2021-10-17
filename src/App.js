@@ -6,7 +6,6 @@ import { Map } from "./utils/Map.js";
 
 export default class App {
   constructor($target) {
-    let map = Map.initMap();
-    Map.drawPinsNLine(map, {});
+    Baljaguk.drawBaljaguk();
   }
 }
