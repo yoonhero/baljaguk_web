@@ -35,6 +35,7 @@ function init() {
     addressText.innerText = user?.address;
     privateKeyText.innerText = user?.privateKey;
     Baljaguk.drawBaljaguk(user?.address);
+    Baljaguk.drawTimeline(user?.address);
   } else {
     //////////////////////////////// WHEN Not LoggedIn //////////////////////////////////
     try {
@@ -68,6 +69,7 @@ function init() {
       if (ok) {
         loginedScreen.classList.remove("hidden");
         loggedOutContent.classList.add("hidden");
+        init();
       } else {
         errorMessage.innerText = "다시 시도해주세요!";
         loginBtn.disabled = false;
@@ -89,6 +91,7 @@ function init() {
       if (ok) {
         loginedScreen.classList.remove("hidden");
         loggedOutContent.classList.add("hidden");
+        init();
       } else {
         loginErrorMessage.innerText = "다시 시도해주세요!";
         user_loginBtn.disabled = false;

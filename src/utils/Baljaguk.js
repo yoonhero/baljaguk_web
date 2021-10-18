@@ -63,6 +63,38 @@ const Baljaguk = {
     let map = Map.initMap();
     Map.drawPinsNLine(map, coordinates, timeline);
   },
+
+  drawTimeline: async (address) => {
+    const TimeLineList = document.querySelector(".sessions");
+    const baljaguks = await Baljaguk.seeBaljaguk(address);
+
+    let timeline = baljaguks.map((baljaguk) => {
+      return {
+        time: Baljaguk.getTimeLineLabel(baljaguk.timestamp * 1000),
+        lat: baljaguk?.latitude,
+        lng: baljaguk?.longitude,
+        storeHash: baljaguk?.storeHash,
+      };
+    });
+
+    console.log(timeline);
+
+    timeline.map((t) => {
+      let listObj = document.createElement("li");
+
+      let timeText = document.createElement("div");
+      timeText.innerText = t.time;
+      timeText.classList.add("time");
+
+      let infoText = document.createElement("p");
+      infoText.innerText = "위도: " + t.lat + " 경도: " + t.lng;
+
+      listObj.appendChild(timeText);
+      listObj.appendChild(infoText);
+
+      TimeLineList.appendChild(listObj);
+    });
+  },
 };
 
 export { Baljaguk };
