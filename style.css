@@ -167,6 +167,7 @@ button {
 
 .sessions {
   margin-top: 2rem;
+  margin-bottom: 200px;
   border-radius: 12px;
   position: relative;
   list-style: none;

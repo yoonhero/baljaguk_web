@@ -77,8 +77,6 @@ const Baljaguk = {
       };
     });
 
-    console.log(timeline);
-
     timeline.map((t) => {
       let listObj = document.createElement("li");
 

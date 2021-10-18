@@ -23,6 +23,18 @@ const loginErrorMessage = userloginForm.querySelector(".errorMessage");
 
 const changeMode = document.querySelector(".changeModeBtn");
 
+// 클립보드에 글씨 복사
+function copyText(element) {
+  var textToCopy = element.innerText;
+  var myTemporaryInputElement = document.createElement("input");
+  myTemporaryInputElement.type = "text";
+  myTemporaryInputElement.value = textToCopy;
+  document.body.appendChild(myTemporaryInputElement);
+  myTemporaryInputElement.select();
+  document.execCommand("Copy");
+  document.body.removeChild(myTemporaryInputElement);
+}
+
 function init() {
   const user = UserStorage.getUser();
   if (user) {
@@ -34,6 +46,15 @@ function init() {
     loggedOutContent.classList.add("hidden");
     addressText.innerText = user?.address;
     privateKeyText.innerText = user?.privateKey;
+
+    addressText.addEventListener("click", () => {
+      copyText(addressText);
+    });
+
+    privateKeyText.addEventListener("click", () => {
+      copyText(privateKeyText);
+    });
+
     Baljaguk.drawBaljaguk(user?.address);
     Baljaguk.drawTimeline(user?.address);
   } else {
