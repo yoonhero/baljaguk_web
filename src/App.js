@@ -36,6 +36,7 @@ function copyText(element) {
 }
 
 function init() {
+  UserStorage.removeUserData();
   const user = UserStorage.getUser();
   if (user) {
     try {
